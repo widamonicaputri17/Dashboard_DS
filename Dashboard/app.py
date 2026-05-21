@@ -8,16 +8,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime
 
-import os
-
-# Debug: Cek file yang ada
-st.write("Current directory:", os.getcwd())
-st.write("Files here:", os.listdir('.'))
-
-# Cek apakah ada folder Dashboard
-if os.path.exists('Dashboard'):
-    st.write("Files in Dashboard:", os.listdir('Dashboard'))
-
 # ============================================
 # KONFIGURASI HALAMAN
 # ============================================
@@ -190,6 +180,9 @@ st.markdown("""
 # ============================================
 @st.cache_data
 def load_data():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(current_dir, 'data_dynamic.csv')
+    
     df = pd.read_csv('data_dynamic.csv')
     df['tanggal'] = pd.to_datetime(df['tanggal'])
     df['bulan'] = df['tanggal'].dt.month
