@@ -8,21 +8,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime
 
-import os
-
-# Debug: Lihat file apa saja yang ada di folder
-st.write("📁 File yang ada di folder ini:")
-for file in os.listdir('.'):
-    st.write(f"  - {file}")
-
-# Debug: Coba baca file CSV dengan error handling
-try:
-    df_test = pd.read_csv('data_dynamic.csv')
-    st.success(f"✅ File data_dynamic.csv berhasil dibaca! Jumlah baris: {len(df_test)}")
-    st.write("Kolom:", df_test.columns.tolist())
-except Exception as e:
-    st.error(f"❌ Gagal membaca file: {e}")
-
 # ============================================
 # KONFIGURASI HALAMAN
 # ============================================
