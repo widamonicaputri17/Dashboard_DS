@@ -197,6 +197,9 @@ df = load_data()
 
 @st.cache_data
 def load_bahan():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(current_dir, 'bahan_baku.csv')
+    
     df = pd.read_csv('bahan_baku.csv')
     df['tanggal'] = pd.to_datetime(df['tanggal'])
     return df
