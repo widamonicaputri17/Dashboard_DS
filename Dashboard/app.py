@@ -178,12 +178,14 @@ st.markdown("""
 # ============================================
 # LOAD DATA
 # ============================================
+import os
+
 @st.cache_data
 def load_data():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     file_path = os.path.join(current_dir, 'data_dynamic.csv')
     
-    df = pd.read_csv('data_dynamic.csv')
+    df = pd.read_csv(file_path)  # ← pakai file_path
     df['tanggal'] = pd.to_datetime(df['tanggal'])
     df['bulan'] = df['tanggal'].dt.month
     df['nama_bulan'] = df['bulan'].map({
@@ -193,17 +195,17 @@ def load_data():
     })
     return df
 
-df = load_data()
-
 @st.cache_data
 def load_bahan():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     file_path = os.path.join(current_dir, 'bahan_baku.csv')
     
-    df = pd.read_csv('bahan_baku.csv')
+    df = pd.read_csv(file_path)  # ← pakai file_path, BUKAN 'bahan_baku.csv'
     df['tanggal'] = pd.to_datetime(df['tanggal'])
     return df
 
+# Panggil fungsi
+df = load_data()
 df_beli = load_bahan()
 
 # ============================================
