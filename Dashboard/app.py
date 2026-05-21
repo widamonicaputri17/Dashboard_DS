@@ -8,6 +8,11 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime
 
+import os
+st.write("📁 File dalam folder Dashboard:")
+for file in os.listdir('.'):
+    st.write(f"  - {file}")
+
 # ============================================
 # KONFIGURASI HALAMAN
 # ============================================
