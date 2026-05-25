@@ -427,7 +427,6 @@ with tab3:
         st.plotly_chart(fig3b, use_container_width=True)
 
 with tab4:
-    st.subheader("📦 Komposisi Profit per Kategori")
     
     filtered_df['kategori'] = filtered_df['produk'].apply(
         lambda x: 'Bouquet' if 'bouquet' in str(x).lower() 
@@ -439,7 +438,7 @@ with tab4:
     col_k1, col_k2 = st.columns(2, gap="large", vertical_alignment="top")
     
     with col_k1:
-        st.subheader("📦 Profit per Kategori")
+        st.subheader("📦 Komposisi Profit per Kategori")
 
         fig4 = px.pie(
             profit_kategori,
