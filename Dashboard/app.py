@@ -439,47 +439,61 @@ with tab4:
     col_k1, col_k2 = st.columns(2, gap="large", vertical_alignment="top")
     
     with col_k1:
-        st.markdown("### 📦 Profit per Kategori")
+        st.subheader("📦 Profit per Kategori")
 
         fig4 = px.pie(
             profit_kategori,
             values='Profit',
             names='kategori',
-            title='Persentase Profit per Kategori',
+            title='',
             color_discrete_sequence=['#F70505', "#F3B5B5", "#777777"],
             hole=0.3
         )
-        fig4.update_traces(textposition='inside', textinfo='percent+label')
+
+        fig4.update_traces(
+            textposition='inside',
+            textinfo='percent+label'
+        )
+
         fig4.update_layout(
             height=450,
-            margin=dict(t=60, b=30, l=20, r=20)
+            margin=dict(t=20, b=20, l=20, r=20)
         )
+
         st.plotly_chart(fig4, use_container_width=True)
     
     with col_k2:
-        st.markdown("### 📊 Profit per Bulan")
+        st.subheader("📊 Profit per Bulan")
 
         monthly_profit = filtered_df.groupby('bulan')['Profit'].sum().reset_index()
+
         monthly_profit['nama_bulan'] = monthly_profit['bulan'].map({
-            1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr', 5: 'Mei', 6: 'Jun',
-            7: 'Jul', 8: 'Agu', 9: 'Sep', 10: 'Okt', 11: 'Nov', 12: 'Des'
+            1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr',
+            5: 'Mei', 6: 'Jun', 7: 'Jul', 8: 'Agu',
+            9: 'Sep', 10: 'Okt', 11: 'Nov', 12: 'Des'
         })
         
         fig4b = px.bar(
             monthly_profit,
             x='nama_bulan',
             y='Profit',
-            title='Total Profit per Bulan',
+            title='',
             color='Profit',
             color_continuous_scale='Reds',
             text='Profit',
             template='plotly_white'
         )
-        fig4b.update_traces(texttemplate='Rp %{text:,.0f}', textposition='outside')
+
+        fig4b.update_traces(
+            texttemplate='Rp %{text:,.0f}',
+            textposition='outside'
+        )
+
         fig4b.update_layout(
             height=450,
-            margin=dict(t=60, b=30, l=20, r=20)
+            margin=dict(t=20, b=20, l=20, r=20)
         )
+
         st.plotly_chart(fig4b, use_container_width=True)
 
 with tab5:
