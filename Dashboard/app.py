@@ -448,7 +448,7 @@ with tab4:
             hole=0.3
         )
         fig4.update_traces(textposition='inside', textinfo='percent+label')
-        fig4.update_layout(height=400)
+        fig4.update_layout(height=450)
         st.plotly_chart(fig4, use_container_width=True)
     
     with col_k2:
