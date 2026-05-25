@@ -436,9 +436,11 @@ with tab4:
     
     profit_kategori = filtered_df.groupby('kategori')['Profit'].sum().reset_index()
     
-    col_k1, col_k2 = st.columns(2)
+    col_k1, col_k2 = st.columns(2, gap="large", vertical_alignment="top")
     
     with col_k1:
+        st.markdown("### 📦 Profit per Kategori")
+
         fig4 = px.pie(
             profit_kategori,
             values='Profit',
@@ -448,11 +450,15 @@ with tab4:
             hole=0.3
         )
         fig4.update_traces(textposition='inside', textinfo='percent+label')
-        fig4.update_layout(height=450)
+        fig4.update_layout(
+            height=450,
+            margin=dict(t=60, b=30, l=20, r=20)
+        )
         st.plotly_chart(fig4, use_container_width=True)
     
     with col_k2:
-        st.subheader("📊 Profit per Bulan")
+        st.markdown("### 📊 Profit per Bulan")
+
         monthly_profit = filtered_df.groupby('bulan')['Profit'].sum().reset_index()
         monthly_profit['nama_bulan'] = monthly_profit['bulan'].map({
             1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr', 5: 'Mei', 6: 'Jun',
@@ -470,10 +476,11 @@ with tab4:
             template='plotly_white'
         )
         fig4b.update_traces(texttemplate='Rp %{text:,.0f}', textposition='outside')
-        fig4b.update_layout(height=450)
+        fig4b.update_layout(
+            height=450,
+            margin=dict(t=60, b=30, l=20, r=20)
+        )
         st.plotly_chart(fig4b, use_container_width=True)
-
-st.markdown('<hr class="custom-divider">', unsafe_allow_html=True)
 
 with tab5:
     st.subheader("📦 Prioritas Bahan Baku")
