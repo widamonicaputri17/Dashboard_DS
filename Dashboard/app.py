@@ -470,7 +470,7 @@ with tab4:
             template='plotly_white'
         )
         fig4b.update_traces(texttemplate='Rp %{text:,.0f}', textposition='outside')
-        fig4b.update_layout(height=400)
+        fig4b.update_layout(height=450)
         st.plotly_chart(fig4b, use_container_width=True)
 
 st.markdown('<hr class="custom-divider">', unsafe_allow_html=True)
